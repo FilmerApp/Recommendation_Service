@@ -1,3 +1,3 @@
 # Recommendation Service
 
-[![Tests](https://github.com/RikJansenTU/Recommendation_Service/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/RikJansenTU/Recommendation_Service/actions/workflows/build-and-test.yml)
+[![.NET](https://github.com/RikJansenTU/Recommendation_Service/actions/workflows/UnitTests.yml/badge.svg)](https://github.com/RikJansenTU/Recommendation_Service/actions/workflows/UnitTests.yml)
