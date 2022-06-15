@@ -10,7 +10,6 @@ namespace Tests
 {
     public class MockWatchlistData : IWatchlist
     {
-
         public List<Film> likedFilms { get; set; }
 
         public void AddFilm(int userId, int filmId)
