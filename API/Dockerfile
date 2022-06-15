@@ -11,6 +11,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["API/API.csproj", "API/"]
+COPY ["Logic Layer/Logic Layer.csproj", "Logic Layer/"]
+COPY ["DAL/DAL.csproj", "DAL/"]
 RUN dotnet restore "API/API.csproj"
 COPY . .
 WORKDIR "/src/API"

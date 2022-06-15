@@ -19,7 +19,8 @@ namespace Logic_Layer
 
         public List<Film> MakeRecommendationList(int userId, int amount)
         {
-            //list of all films
+            //list of all films, while this makes manipulating the data here easier it is a very heavy database operation
+            //it might be better to perform some of these actions directly on the database instead of reading them into a list first
             List<Film> allFilms = filmData.GetFilmList();
             List<Film> watchedFilms = watchList.GetFilmsOnWatchlist(userId);
             //remove watched films from films
