@@ -12,14 +12,14 @@ namespace Tests
     {
         public List<Film> films { get; set; }
 
-        public Film GetFilm(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Film> GetFilmList()
         {
             return films;
+        }
+
+        public Film GetFilm(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateMainFilmList()

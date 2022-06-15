@@ -12,6 +12,16 @@ namespace Tests
     {
         public List<Film> likedFilms { get; set; }
 
+        public List<Film> GetFilmsOnWatchlist(int userId)
+        {
+            return likedFilms;
+        }
+
+        public List<Film> GetLikedFilms(int userId)
+        {
+            return likedFilms;
+        }
+
         public void AddFilm(int userId, int filmId)
         {
             throw new NotImplementedException();
@@ -22,15 +32,6 @@ namespace Tests
             throw new NotImplementedException();
         }
 
-        public List<Film> GetFilmsOnWatchlist(int userId)
-        {
-            return likedFilms;
-        }
-
-        public List<Film> GetLikedFilms(int userId)
-        {
-            return likedFilms;
-        }
 
         public List<WatchlistItem> GetWatchlist(int userId)
         {
