@@ -22,9 +22,10 @@ namespace DAL
 
         public void AddFilm(int userId, int filmId)
         {
-            Film film = _data.GetFilm(filmId);
-            WatchlistItem item = new(userId, film);
-            _context.WatchlistItems.Add(item);
+                Film film = _data.GetFilm(filmId);
+                WatchlistItem item = new(userId, film);
+                _context.WatchlistItems.Add(item);
+                _context.SaveChanges();
         }
 
         public void LikeFilm(int userId, int filmId)
@@ -60,16 +61,26 @@ namespace DAL
 
         public List<WatchlistItem> GetWatchlist(int userId)
         {
-            return _context.WatchlistItems.Where(x => x.UserId == userId)
+            List<WatchlistItem> result = _context.WatchlistItems.Where(x => x.UserId == userId)
                 .Include(x => x.Film)
                 .ToList();
+            if (result.Count == 0)
+            {
+                throw new ArgumentException("Either a user with this Id does not exist or there are no items on this user's watchlist", nameof(userId));
+            }
+            return result;
         }
 
         public List<Film> GetFilmsOnWatchlist(int userId)
         {
-            return _context.WatchlistItems.Where(x => x.UserId == userId)
+            List<Film> result = _context.WatchlistItems.Where(x => x.UserId == userId)
                 .Select(x => x.Film)
                 .ToList();
+            if (result.Count == 0)
+            {
+                throw new ArgumentException("Either a user with this Id does not exist or there are no items on this user's watchlist", nameof(userId));
+            }
+            return result;
         }
     }
 }
