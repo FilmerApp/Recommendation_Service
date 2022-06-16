@@ -31,5 +31,5 @@ jobs:
           context: .
           file: ./Recommendation Service/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/Github:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/recommendationservice:latest
 
