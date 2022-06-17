@@ -1,10 +1,9 @@
-﻿//The API now directly uses the DAL, which isn't really supposed to happen. There should be an interface in the logic layer that this API uses
+﻿//The API now directly uses the DAL, which isn't ideal. There should be an interface in the logic layer that this API uses
 //as well as a data transfer object that can be returned by the endpoint, instead of directly using the Film object from the DAL.
 using DAL.Interfaces;
 using DAL.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FilmContext = DAL.FilmContext;
 
 namespace WatchlistService.Controllers
 {
@@ -63,7 +62,7 @@ namespace WatchlistService.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Route("MarkAsWatched")]
@@ -81,7 +80,7 @@ namespace WatchlistService.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Route("LikeFilm")]
@@ -99,7 +98,7 @@ namespace WatchlistService.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Route("DislikeFilm")]

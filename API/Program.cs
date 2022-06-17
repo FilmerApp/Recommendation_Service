@@ -5,8 +5,18 @@ using Logic_Layer.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using FilmContext = DAL.FilmContext;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+        });
+});
 
 // Add services to the container.
 builder.Services.AddScoped<IRecommendation, Algorithm>();
@@ -33,6 +43,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

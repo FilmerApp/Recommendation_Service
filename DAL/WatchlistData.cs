@@ -46,9 +46,15 @@ namespace DAL
 
         public void MarkFilmAsWatched(int userId, int filmId)
         {
-            WatchlistItem item = _context.WatchlistItems.FirstOrDefault(x => x.UserId == userId && x.Film.Id == filmId) ?? throw new ArgumentException("No film with that id could be found on this user's watchlist", nameof(filmId));
+            WatchlistItem item = _context.WatchlistItems.FirstOrDefault(x => (x.UserId == userId) && (x.Film.Id == filmId)) ?? throw new ArgumentException("No film with that id could be found on this user's watchlist", nameof(filmId));
             item.Watched = true;
-            _context.Update(item);
+            _context.SaveChanges();
+        }
+
+        public void MarkFilmAsUnwatched(int userId, int filmId)
+        {
+            WatchlistItem item = _context.WatchlistItems.FirstOrDefault(x => (x.UserId == userId) && (x.Film.Id == filmId)) ?? throw new ArgumentException("No film with that id could be found on this user's watchlist", nameof(filmId));
+            item.Watched = false;
             _context.SaveChanges();
         }
 
