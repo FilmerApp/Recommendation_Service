@@ -1,4 +1,4 @@
-name: .NET
+name: Automatic Testing
 
 on:
   push:
