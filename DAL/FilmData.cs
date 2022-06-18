@@ -20,7 +20,9 @@ namespace DAL
 
         public List<Film> GetFilmList()
         {
-            return _context.Films.ToList();
+            return _context.Films
+                .Include(x => x.Genres)
+                .ToList();
         }
 
         public Film GetFilm(int id)

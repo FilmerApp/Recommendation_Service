@@ -61,6 +61,7 @@ namespace DAL
         public List<Film> GetLikedFilms(int userId)
         {
             return _context.WatchlistItems.Where(x => x.UserId == userId && x.Liked == true)
+                .Include(x => x.Film.Genres)
                 .Select(x => x.Film)
                 .ToList();
         }
@@ -69,12 +70,14 @@ namespace DAL
         {
             List<WatchlistItem> result = _context.WatchlistItems.Where(x => x.UserId == userId)
                 .Include(x => x.Film)
+                .OrderBy(x => x.Watched).ThenBy(x => x.Film.Name)
                 .ToList();
             if (result.Count == 0)
             {
                 throw new ArgumentException("Either a user with this Id does not exist or there are no items on this user's watchlist", nameof(userId));
             }
             return result;
+
         }
 
         public List<Film> GetFilmsOnWatchlist(int userId)
